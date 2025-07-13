@@ -62,6 +62,8 @@ export const updateStudent = async (req, res) => {
 };
 
 export const deleteStudent = async (req, res) => {
+    console.log("Received DELETE request for ID:", req.params.id); // ✅ Add this
+
   try {
     const delstd = await Student.findByIdAndDelete(req.params.id);
     if (!delstd) {

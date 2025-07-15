@@ -2,7 +2,6 @@ import express from 'express'
 
 
 import {createStudent,getallStudent,getStudentid,updateStudent,deleteStudent} from '../controllers/studentController.js'
-
 const router = express.Router()
 
 router.post("/",createStudent);

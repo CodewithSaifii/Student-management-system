@@ -8,7 +8,7 @@ export const createStudent = async (req, res) => {
       return res.status(400).json({ message: "Please fill all fields" });
     }
 
-    const existing = await Student.findOne({ email });
+    const existing = await Student.findOne({ email }):
     if (existing) {
       return res
         .status(409)

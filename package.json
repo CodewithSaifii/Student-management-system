@@ -2,7 +2,11 @@
   "name": "crud",
   "version": "1.0.0",
   "main": "index.js",
+  "description": "",
   "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd Server && nodemon server.js",
+    "client": "cd Client && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,8 +20,8 @@
     "url": "https://github.com/CodewithSaifii/Student-management-system/issues"
   },
   "homepage": "https://github.com/CodewithSaifii/Student-management-system#readme",
-  "description": "",
   "dependencies": {
+    "concurrently": "^9.2.0",
     "express": "^5.1.0",
     "mongoose": "^8.16.3",
     "nodemon": "^3.1.10"

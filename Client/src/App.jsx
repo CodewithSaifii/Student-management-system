@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import StudentForm from './components/StudentForm';
 import StudentList from './components/StudentList';
-import './App.css'
+import './App.css';
+
+const baseurl = "https://student-management-system-fgfe.onrender.com";
 
 const App = () => {
   const [students, setStudents] = useState([]);
-  const [editingStudent, setEditingStudent] = useState(null); // 🔁 for editing
+  const [editingStudent, setEditingStudent] = useState(null);
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/students');
+      const res = await axios.get(`${baseurl}/students`);
       setStudents(res.data);
     } catch (err) {
       console.error('Error fetching students:', err.message);
@@ -24,10 +26,10 @@ const App = () => {
   const handleFormSubmit = async (data) => {
     try {
       if (editingStudent) {
-        await axios.put(`http://localhost:5000/api/students/${editingStudent._id}`, data);
-        setEditingStudent(null); // Reset form after update
+        await axios.put(`${baseurl}/students/${editingStudent._id}`, data);
+        setEditingStudent(null);
       } else {
-        await axios.post('http://localhost:5000/api/students', data);
+        await axios.post(`${baseurl}/students`, data);
       }
       fetchStudents();
     } catch (err) {
@@ -37,7 +39,7 @@ const App = () => {
 
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/students/${id}`);
+      await axios.delete(`${baseurl}/students/${id}`);
       fetchStudents();
     } catch (err) {
       console.error('Error deleting student:', err.message);
